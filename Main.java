@@ -210,74 +210,73 @@ public class Main {
         Endereco enderecoInicial = cadastrarEnderecoInicial();
         Endereco enderecoFinal = cadastrarEnderecoFinal();
 
-        Scanner scanDecisao = new Scanner(System.in);
-        int decisao;
-        boolean decisaoValida = false;
-
-        while (!decisaoValida) {
-            try {
-                System.out.println("Para pedir uma Carona digite (1) ou Para pedir uma Entrega digite (2):");
-                decisao = scanDecisao.nextInt();
-                scanDecisao.nextLine();
-
-                double nDePedidoAleatorio = Math.random();
-                String nDoPedido = Double.toString(nDePedidoAleatorio);
-
-                switch (decisao) {
-                    case 1 -> {
-                        System.out.println("Insira o numero de passageiros");
-                        Scanner scanNDePassageiros = new Scanner(System.in);
-                        int nDePassageiros = scanNDePassageiros.nextInt();
-                        scanNDePassageiros.nextLine();
-
-                        Carona carona = new Carona(nDoPedido, cliente, motorista, enderecoInicial, enderecoFinal, nDePassageiros);
-                        carona.fazerPedido();
-
-                        System.out.println("Status do pedido: ");
-                        System.out.println("Tipo: Carona");
-                        System.out.println("Numero do Pedido: " + nDoPedido);
-                        System.out.println("Feito por: " + cliente.getNome());
-                        System.out.println("Motorista: " + motorista.getNome());
-                        System.out.println("Placa: " + motorista.getVeiculo().getPlaca());
-                        System.out.println("Cor: " + motorista.getVeiculo().getCor());
-                        System.out.println("Endereco Inicial: " + enderecoInicial.getLogradouro() + ", " + enderecoInicial.getNumero() + ", "+ enderecoInicial.getComplemento());
-                        System.out.println("Endereco Final: " + enderecoFinal.getLogradouro() + ", " + enderecoFinal.getNumero() + ", "+ enderecoFinal.getComplemento());
-
-                        decisaoValida = true;
+        try (Scanner scanDecisao = new Scanner(System.in)) {
+            int decisao;
+            boolean decisaoValida = false;
+            
+            while (!decisaoValida) {
+                try {
+                    System.out.println("Para pedir uma Carona digite (1) ou Para pedir uma Entrega digite (2):");
+                    decisao = scanDecisao.nextInt();
+                    scanDecisao.nextLine();
+                    
+                    double nDePedidoAleatorio = Math.random();
+                    String nDoPedido = Double.toString(nDePedidoAleatorio);
+                    
+                    switch (decisao) {
+                        case 1 -> {
+                            System.out.println("Insira o numero de passageiros");
+                            Scanner scanNDePassageiros = new Scanner(System.in);
+                            int nDePassageiros = scanNDePassageiros.nextInt();
+                            scanNDePassageiros.nextLine();
+                            
+                            Carona carona = new Carona(nDoPedido, cliente, motorista, enderecoInicial, enderecoFinal, nDePassageiros);
+                            carona.fazerPedido();
+                            
+                            System.out.println("Status do pedido: ");
+                            System.out.println("Tipo: Carona");
+                            System.out.println("Numero do Pedido: " + nDoPedido);
+                            System.out.println("Feito por: " + cliente.getNome());
+                            System.out.println("Motorista: " + motorista.getNome());
+                            System.out.println("Placa: " + motorista.getVeiculo().getPlaca());
+                            System.out.println("Cor: " + motorista.getVeiculo().getCor());
+                            System.out.println("Endereco Inicial: " + enderecoInicial.getLogradouro() + ", " + enderecoInicial.getNumero() + ", "+ enderecoInicial.getComplemento());
+                            System.out.println("Endereco Final: " + enderecoFinal.getLogradouro() + ", " + enderecoFinal.getNumero() + ", "+ enderecoFinal.getComplemento());
+                            
+                            decisaoValida = true;
+                        }
+                        case 2 -> {
+                            System.out.println("Insira o conteudo da entrega");
+                            Scanner scanConteudo = new Scanner(System.in);
+                            String conteudo = scanConteudo.nextLine();
+                            
+                            Entrega entrega = new Entrega(nDoPedido, cliente, motorista, enderecoInicial, enderecoFinal, conteudo);
+                            entrega.fazerPedido();
+                            
+                            
+                            System.out.println("Status do pedido: ");
+                            System.out.println("Tipo: Entrega");
+                            System.out.println("Numero do Pedido: " + nDoPedido);
+                            System.out.println("Conteudo: " + conteudo);
+                            System.out.println("Feito por: " + cliente.getNome());
+                            System.out.println("Motorista: " + motorista.getNome());
+                            System.out.println("Placa: " + motorista.getVeiculo().getPlaca());
+                            System.out.println("Cor: " + motorista.getVeiculo().getCor());
+                            System.out.println("Endereco Inicial: " + enderecoInicial.getLogradouro() + ", " + enderecoInicial.getNumero() + ", "+ enderecoInicial.getComplemento());
+                            System.out.println("Endereco Final: " + enderecoFinal.getLogradouro() + ", " + enderecoFinal.getNumero() + ", "+ enderecoFinal.getComplemento());
+                            
+                            decisaoValida = true;
+                        }
+                        default ->
+                            System.out.println("Opcao invalida. Por favor, insira 1 ou 2.");
                     }
-                    case 2 -> {
-                        System.out.println("Insira o conteudo da entrega");
-                        Scanner scanConteudo = new Scanner(System.in);
-                        String conteudo = scanConteudo.nextLine();
-
-                        Entrega entrega = new Entrega(nDoPedido, cliente, motorista, enderecoInicial, enderecoFinal, conteudo);
-                        entrega.fazerPedido();
-
-                        
-                        System.out.println("Status do pedido: ");
-                        System.out.println("Tipo: Entrega");
-                        System.out.println("Numero do Pedido: " + nDoPedido);
-                        System.out.println("Conteudo: " + conteudo);
-                        System.out.println("Feito por: " + cliente.getNome());
-                        System.out.println("Motorista: " + motorista.getNome());
-                        System.out.println("Placa: " + motorista.getVeiculo().getPlaca());
-                        System.out.println("Cor: " + motorista.getVeiculo().getCor());
-                        System.out.println("Endereco Inicial: " + enderecoInicial.getLogradouro() + ", " + enderecoInicial.getNumero() + ", "+ enderecoInicial.getComplemento());
-                        System.out.println("Endereco Final: " + enderecoFinal.getLogradouro() + ", " + enderecoFinal.getNumero() + ", "+ enderecoFinal.getComplemento());
-
-                        decisaoValida = true;
-                    }
-                    default ->
-                        System.out.println("Opcao invalida. Por favor, insira 1 ou 2.");
+                } catch (InputMismatchException e) {
+                    
+                    System.out.println("Valor inválido. Por favor, insira um número inteiro (1 ou 2).");
+                    scanDecisao.nextLine();
                 }
-            } catch (InputMismatchException e) {
-
-                System.out.println("Valor inválido. Por favor, insira um número inteiro (1 ou 2).");
-                scanDecisao.nextLine();
             }
         }
-
-        scanDecisao.close();
     }
 
 }
