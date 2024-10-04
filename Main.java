@@ -32,7 +32,6 @@ public class Main {
         System.out.println("Data de Nascimento: ");
         Scanner scanDataDeNascimento = new Scanner(System.in);
         String dataDeNascimentoString = scanDataDeNascimento.nextLine();
-
         DateTimeFormatter fmt = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate dataDeNascimento = LocalDate.parse(dataDeNascimentoString, fmt);
 
@@ -42,13 +41,6 @@ public class Main {
 
         Cliente cliente = new Cliente(nome, sobrenome, cpf, email, telefone, dataDeNascimento, nCartaoDeCredito);
 
-        // System.out.println("Nome: " + cliente.getNome());
-        // System.out.println("Sobrenome: " + cliente.getSobrenome());
-        // System.out.println("CPF: " + cliente.getCpf());
-        // System.out.println("Email: " + cliente.getEmail());
-        // System.out.println("Telefone: " + cliente.getTelefone());
-        // System.out.println("Data de Nascimento: " + cliente.getDataDeNascimento());
-        // System.out.println("Numero do Cartao de Credito: " + cliente.getnCartaoDeCredito());
         return cliente;
     }
 
