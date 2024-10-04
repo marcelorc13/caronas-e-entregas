@@ -8,7 +8,7 @@ public class Carona extends Pedido implements IPedido {
 
     @Override
     public void fazerPedido() {
-        System.out.println("Pedido realizado com sucesso!");
+        System.out.println("Pedido de Carona realizado com sucesso!");
     }
 
     public int getNDePessoas() {

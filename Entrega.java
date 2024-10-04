@@ -10,7 +10,7 @@ public class Entrega extends Pedido implements IPedido {
 
     @Override
     public void fazerPedido() {
-        System.out.println("Pedido realizado com sucesso!");
+        System.out.println("Pedido de Entrega com sucesso!");
     }
 
     public String getConteudo() {
