@@ -1,16 +1,23 @@
-public class Entrega extends Pedido {
-    private int nDePessoas;
 
-    public Entrega(String codigoPedido, Cliente cliente, Motorista motorista, Endereco enderecoInicial, Endereco enderecoFinal, int nDePessoas) {
+public class Entrega extends Pedido implements IPedido {
+
+    private String conteudo;
+
+    public Entrega(String codigoPedido, Cliente cliente, Motorista motorista, Endereco enderecoInicial, Endereco enderecoFinal, String conteudo) {
         super(codigoPedido, cliente, motorista, enderecoInicial, enderecoFinal);
-        this.nDePessoas = nDePessoas;
+        this.conteudo = conteudo;
     }
 
-    public int getNDePessoas() {
-        return nDePessoas;
+    @Override
+    public void fazerPedido() {
+        System.out.println("Pedido realizado com sucesso!");
     }
 
-    public void setNDePessoas(int nDePessoas) {
-        this.nDePessoas = nDePessoas;
+    public String getConteudo() {
+        return this.conteudo;
+    }
+
+    public void setConteudo(String conteudo) {
+        this.conteudo = conteudo;
     }
 }

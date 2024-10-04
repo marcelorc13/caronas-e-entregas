@@ -1,4 +1,4 @@
-public class Pedido implements IPedido {
+public class Pedido {
     private String codigoPedido;
     private Cliente cliente;
     private Motorista motorista;
@@ -13,10 +13,7 @@ public class Pedido implements IPedido {
         this.enderecoFinal = enderecoFinal;
     }
 
-    @Override
-    public void fazerPedido() {
-        System.out.println("Pedido realizado com sucesso!");
-    }
+
 
     public String getCodigoPedido() {
         return codigoPedido;
