@@ -220,8 +220,8 @@ public class Main {
                     decisao = scanDecisao.nextInt();
                     scanDecisao.nextLine();
                     
-                    double nDePedidoAleatorio = Math.random();
-                    String nDoPedido = Double.toString(nDePedidoAleatorio);
+                    double nDePedidoAleatorio = Math.random() * 1000000;
+                    String nDoPedido = Double.toString(Math.round(nDePedidoAleatorio));
                     
                     switch (decisao) {
                         case 1 -> {
